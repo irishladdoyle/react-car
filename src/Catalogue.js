@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import { Cars, Orders, Customers } from './Data'
 import { Link } from 'react-router';
+import NavigationBar from './NavigationBar';
 
 console.log('App.js OK, renderring');
 
@@ -82,12 +83,15 @@ var Catalogue = React.createClass({
     var filteredList = _.sortBy(list, this.state.sort);
     var orders = Orders;
     return (
-      <div className="view-container">
-        <div className="view-frame">
-          <div className="container-fluid">
-            <div className="row">
-              <SelectBox onUserInput={this.handleChange} filterText={this.state.search} sort={this.state.sort} />
-              <FilteredCarList cars={filteredList} orders={orders} />
+      <div>
+        <NavigationBar/>
+        <div className="view-container">
+          <div className="view-frame">
+            <div className="container-fluid">
+              <div className="row">
+                <SelectBox onUserInput={this.handleChange} filterText={this.state.search} sort={this.state.sort} />
+                <FilteredCarList cars={filteredList} orders={orders} />
+              </div>
             </div>
           </div>
         </div>
