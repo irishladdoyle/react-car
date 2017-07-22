@@ -1,8 +1,8 @@
-var Cars =  [
+var Cars = [
   {
     "id": 0,
     "name": "BMW",
-  }, 
+  },
   {
     "id": 1,
     "name": "Nissan",
@@ -25,4 +25,4 @@ var Customers = [
   }
 ];
 
-export {Cars, Orders, Customers};
+export { Cars, Orders, Customers };
