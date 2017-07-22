@@ -36,6 +36,12 @@ function nextOrderID(Orders) {
 
 // --
 
+function getCar(id) {
+  return Cars.find(function(car) {
+    return car.id == id;
+  });
+}
+
 function addCar() {
 
 }
@@ -60,4 +66,16 @@ function rentCar(carID, date, email, username) {
   }
 }
 
-export {rentCar};
+function getAllRents(email) {
+  return Orders.filter(function(order) {
+    return order.customerEmail === email;
+  });
+}
+
+function getRent(id) {
+  return Orders.find(function(order) {
+    return order.id == id;
+  });
+}
+
+export {rentCar, getRent, getAllRents ,getCar};

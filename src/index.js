@@ -5,6 +5,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import CarDetail from './CarDetail'
 import Rent from './Rent'
+import RentDetails from './RentDetails';
 
 var App = React.createClass({
   render : function() {
@@ -25,6 +26,7 @@ ReactDOM.render( (
         <Route path="cars/" component={Catalogue}/>
         <Route path="cars/:id" component={CarDetail} />
         <Route path="rent/:id" component={Rent} />
+        <Route path="rents/find" component={RentDetails} />
       </Route>
     </Router>
   ),
