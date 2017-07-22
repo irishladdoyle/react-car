@@ -1,4 +1,4 @@
-var Cars =  [ 
+var Cars =  [
   {
     "id": 0,
     "name": "BMW",
@@ -12,7 +12,7 @@ var Cars =  [
 var Orders = [
   {
     "id": 0,
-    "customerID": 0,
+    "customerEmail": 0,
     "carID": 0,
     "date": "1-1-2017"
   }
@@ -20,8 +20,8 @@ var Orders = [
 
 var Customers = [
   {
-    "id": 0,
-    "name": "unknown"
+    "name": "luffy",
+    "email": "captain@goingmerry.com",
   }
 ];
 

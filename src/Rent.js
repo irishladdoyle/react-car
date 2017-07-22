@@ -4,6 +4,7 @@ import moment from 'moment';
 import { Cars, Orders, Customers } from './Data'
 import { Link } from 'react-router';
 import DayPicker from 'react-day-picker';
+import { rentCar } from './tasks';
 import 'react-day-picker/lib/style.css';
 
 function date(momentObj) {
@@ -28,6 +29,7 @@ var RentForm = React.createClass({
         e.preventDefault();
         if(!this.state.name || !this.state.email || !this.props.date) return alert('Must pick date, name, and email');
         if(moment(this.props.date).isBefore(now())) return alert('Invalid date');
+        rentCar(this.props.carID, this.props.date, this.state.email, this.state.name);
     },
     render() {
         return (
@@ -60,7 +62,7 @@ var Rent = React.createClass({
     render() {
         return (
             <div>
-                <RentForm date={this.state.date} />
+                <RentForm carID={this.props.routeParams.id} date={this.state.date} />
                 <DayPicker onDayClick={this.handleDayClick} />
             </div>
         );

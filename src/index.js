@@ -10,7 +10,7 @@ var App = React.createClass({
   render : function() {
     return (
       <div>
-        <h1>Phone Catalogue </h1>
+        <h1>Cars for rent</h1>
         {this.props.children}
       </div>
     )
