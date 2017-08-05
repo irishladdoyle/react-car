@@ -3,8 +3,16 @@ import { getRent, getAllRents, getCar } from './tasks';
 import SearchBox from './SearchBox';
 
 var RentItem = React.createClass({
+  getInitialState() {
+    return {carName: ''};
+  },
+  componentDidMount() {
+    getCar(this.props.rent.carID, function(car) {
+      this.setState({carName: car.name});
+    }.bind(this));
+  },
 	render() {
-		return (<li>{this.props.carName}, date: {this.props.date}</li>);
+		return (<li>{this.state.carName}, date: {this.props.rent.date}</li>);
 	}
 });
 
@@ -20,8 +28,7 @@ var RentDetails = React.createClass({
 	},
 	render() {
 		var rents = this.state.results.map(function (rent) {
-			var carName = getCar(rent.carID).name;
-			return (<RentItem carName={carName} date={rent.date} />);
+			return (<RentItem rent={rent} />);
 		});
 		return (
 			<div>

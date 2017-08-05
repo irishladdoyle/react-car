@@ -63,9 +63,11 @@ function getCustomers() {
   return Customers;
 }
 
-function getCar(id) {
-  return Cars.find(function (car) {
-    return car.id == id;
+function getCar(id, cb) {
+  console.log('Getting car by id');
+  request.get(URL + '/cars/' + id, function(err, res) {
+    if(err) return handleErr(err);
+    cb(formatRes(res));
   });
 }
 
