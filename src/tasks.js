@@ -1,4 +1,7 @@
 import { Cars, Orders, Customers } from './Data'
+import request from 'superagent'
+
+var URL = 'http://localhost:4000';
 
 // Utils
 
@@ -36,8 +39,20 @@ function nextOrderID(Orders) {
 
 // --
 
-function getCars() {
-  return Cars;
+function handleErr(err) {
+  console.warn(err);
+}
+
+function formatRes(res) {
+  return JSON.parse(res.text);
+}
+
+function getCars(cb) {
+  console.log('Getting cars');
+  request.get(URL + '/cars', function(err, res) {
+    if(err) return handleErr(err);
+    cb(formatRes(res));
+  });
 }
 
 function getOrders() {

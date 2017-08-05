@@ -34,13 +34,22 @@ var CarList = React.createClass({
 });
 
 var Catalogue = React.createClass({
+  getInitialState() {
+    return {cars: []}
+  },
+  componentDidMount() {
+    getCars(function (cars) {
+      console.warn(cars);
+      this.setState({cars: cars})
+    }.bind(this));
+  },
   render() {
     return (
       <div className="view-container">
         <div className="view-frame">
           <div className="container-fluid">
             <div className="row">
-              <CarList cars={getCars()} orders={getOrders()} />
+              <CarList cars={this.state.cars} orders={getOrders()} />
             </div>
           </div>
         </div>
