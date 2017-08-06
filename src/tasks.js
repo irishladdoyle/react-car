@@ -44,6 +44,7 @@ function handleErr(err) {
 }
 
 function formatRes(res) {
+  console.log('Formatting', res.text);
   return JSON.parse(res.text);
 }
 
@@ -64,7 +65,7 @@ function getCustomers() {
 }
 
 function getCar(id, cb) {
-  console.log('Getting car by id');
+  console.log('Getting car by id', id);
   request.get(URL + '/cars/' + id, function(err, res) {
     if(err) return handleErr(err);
     cb(formatRes(res));
@@ -105,10 +106,13 @@ function getAllRents(email, cb) {
     });
 }
 
-function getRent(id) {
-  return Orders.find(function (order) {
-    return order.id == id;
+function getRent(id, cb) {
+  console.log('Getting rent by id');
+  request.get(URL + '/rents/' + id, function(err, res) {
+    if(err) return handleErr(err);
+    cb(formatRes(res));
   });
+  
 }
 
 export { getCars, getOrders, rentCar, getRent, getAllRents, getCar };
