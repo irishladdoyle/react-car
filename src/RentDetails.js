@@ -23,8 +23,15 @@ var RentDetails = React.createClass({
 	handleChangeMode() {
 		this.setState({ mode: this.state.mode === 'Find by email' ? 'Find by ID' : 'Find by email' })
 	},
-	handleSearch(query) {
-		this.setState({ results: this.state.mode === 'Find by email' ? getAllRents(query) : [getRent(query)] });
+	handleSearch(email) {
+    if (this.state.mode === 'Find by email') {
+      getAllRents(email, function(rents) {
+        this.setState({results: rents});
+      }.bind(this));
+    }
+    else {
+      this.setState({ results: [getRent(email)] });
+    }
 	},
 	render() {
 		var rents = this.state.results.map(function (rent) {

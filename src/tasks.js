@@ -95,10 +95,14 @@ function rentCar(carID, date, email, username) {
   }
 }
 
-function getAllRents(email) {
-  return Orders.filter(function (order) {
-    return order.customerEmail === email;
-  });
+function getAllRents(email, cb) {
+  console.log('Getting rents');
+  request.get(URL + '/rents')
+    .query({email: email})
+    .end(function(err, res) {
+      if(err) return handleErr(err);
+      cb(formatRes(res));
+    });
 }
 
 function getRent(id) {
